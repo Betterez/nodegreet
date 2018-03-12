@@ -1,0 +1,23 @@
+deployment:
+  elb_version: 0
+  healthcheck:
+    command: curl -m 5 -i localhost:3000/healthcheck|head -n1
+    perform: true
+    result: 200 OK
+  nginx_conf: app
+  path_name: /
+  service_name: nodegreet
+  service_type: http
+  source:
+    branch_name: master
+    repo: git@github.com:Betterez/nodegreet.git
+    type: git
+machine:
+  daemon_type: systemd
+  image: node8100ossec_16
+  instance_type: t2.small
+  install:
+  - mkdir -p app/uploads
+  - npm install
+  - npm install
+  start: /usr/bin/npm --prefix /home/bz-app/nodegreet start
