@@ -14,7 +14,8 @@ app.get('/',(req,res)=>{
       return
     }
     let ordinal=Math.floor(Math.random()*data.Items.length)
-    res.send(`time stamp :${new Date()}<br>
+    res.send(`<h2>version 0.0.0.8</h2><br>
+    time stamp :${new Date()}<br>
       your ordinal ${ordinal}<br>
       length ${data.Items.length}<br>
       ${data.Items[ordinal].greeting.S}
